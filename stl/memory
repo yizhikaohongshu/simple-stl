@@ -1,0 +1,7 @@
+#ifndef __MEMORY__
+#define __MEMORY__
+
+#include "stl_alloc.h"
+#include "stl_construct.h"
+
+#endif
