@@ -9,6 +9,16 @@ struct forward_iterator_tag : public input_iterator_tag { };
 struct bidirectional_iterator_tag : public forward_iterator_tag { };
 struct random_access_iterator_tag : public bidirectional_iterator_tag { };
 
+template<typename Category, typename T, typename Distance = ptrdiff_t, typename Pointer = T*, typename Reference = T&>
+struct iterator
+{
+    typedef Category    iterator_category;
+    typedef T           value_type;
+    typedef Distance    difference_type;
+    typedef Pointer     pointer;
+    typedef Reference   reference;
+};
+
 template<typename I>
 struct iterator_traits
 {
@@ -39,6 +49,7 @@ struct iterator_traits<const T*>
     typedef const T&                    reference;
 };
 
+// 决定某个迭代器的类型
 template<typename Iterator>
 typename iterator_traits<Iterator>::iterator_category
 iterator_category(const Iterator&)
@@ -55,10 +66,10 @@ value_type(const Iterator&)
     return static_cast<typename iterator_traits<Iterator>::value_type*>(nullptr);
 }
 
-// 决定某个迭代器的 difference_type
+// 决定某个迭代器的 distance_type
 template<typename Iterator>
 typename iterator_traits<Iterator>::difference_type*
-difference_type(const Iterator&)
+distance_type(const Iterator&)
 {
     return static_cast<typename iterator_traits<Iterator>::difference_type*>(nullptr);
 }
@@ -83,6 +94,7 @@ __distance(InputIterator first, InputIterator last, random_access_iterator_tag)
     return last - first;
 }
 
+// distance : 计算两个迭代器之间的距离
 template<typename InputIterator>
 typename iterator_traits<InputIterator>::difference_type
 distance(InputIterator first, InputIterator last)
