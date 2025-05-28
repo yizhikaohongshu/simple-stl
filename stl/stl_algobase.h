@@ -48,9 +48,9 @@ OutputIterator fill_n(OutputIterator first, Size n, const T& value)
 template<typename ForwardIterator1, typename ForwardIterator2, typename T>
 inline void __iter_swap(ForwardIterator1 a, ForwardIterator2 b, T*)
 {
-    T tmp = a;
-    a = b;
-    b = tmp;
+    T tmp   = a;
+    a       = b;
+    b       = tmp;
 }
 
 template<typename ForwardIterator1, typename ForwardIterator2>
@@ -110,9 +110,9 @@ pair<InputIterator1, InputIterator2> mismatch(InputIterator1 first1, InputIterat
 template<typename T>
 inline void swap(T& a, T& b)
 {
-    T tmp = a;
-    a = b;
-    b = tmp;
+    T tmp   = a;
+    a       = b;
+    b       = tmp;
 }
 
 template<typename InputIterator1, typename InputIterator2>
