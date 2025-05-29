@@ -218,8 +218,8 @@ char* __default_alloc_template<__threads, __inst>::_S_chunk_alloc(size_t __size,
                 __p = *__my_free_list;
                 if (__p != nullptr) {
                     *__my_free_list = __p->_M_free_list_link;
-                    _S_start_free = (char*)(__p);
-                    _S_end_free = _S_start_free + __i;
+                    _S_start_free   = (char*)(__p);
+                    _S_end_free     = _S_start_free + __i;
                     return _S_chunk_alloc(__size, __nobjs);
                 }
             }
